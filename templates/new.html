@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Отправка анекдота</title>
+    <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='styles/style_joke.css') }}">
+
+</head>
+<body background = "{{ url_for('static', filename='img/jokes.jpg') }}">
+{% if flag %}
+<script>alert("Ваш анекдот отправлен администратору на проверку!")</script>
+{% endif %}
+<form action="" method="post">
+ {{ form.csrf_token }}
+<p>
+  {{ form.email.label }}
+  {{ form.email(class_="input") }}
+  {% for error in form.email.errors  %}
+    {{ error }}
+  {% endfor %}
+</p>
+ <p>
+    {{ form.category.label }}
+  {{ form.category(class_="dropdown") }}
+  {% for error in form.category.errors  %}
+    {{ error }}
+  {% endfor %}
+</p>
+ <p>
+ {{ form.new_anek.label }}
+  {{ form.new_anek(class_="textarea") }}
+  {% for error in form.new_anek.errors  %}
+    {{ error }}
+  {% endfor %}
+</p>
+  {{ form.send(class_="submit_button") }}
+</form>
+</body>
+</html>

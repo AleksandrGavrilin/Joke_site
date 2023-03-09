@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход в систему</title>
+     <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='styles/style_joke.css') }}">
+
+</head>
+<body background = "{{ url_for('static', filename='img/jokes.jpg') }}">
+<h1>Вход в систему</h1>
+<form action="" method="post">
+  {{ form.csrf_token }}
+<table border="0">
+    <tr>
+        <td>{{ form.username.label }} </td>
+ <td> {{ form.username }}</td>
+  {% for error in form.username.errors  %}
+    {{ error }}
+  {% endfor %}
+</tr>
+   <tr>
+<td> {{ form.password.label }} </td>
+ <td> {{ form.password }} </td>
+  {% for error in form.password.errors  %}
+    {{ error }}
+  {% endfor %}
+</tr>
+     <tr>
+    <td> {{ form.remember_me.label }} </td>
+ <td> {{ form.remember_me }} </td>
+
+  <td> {{ form.submit(class_="submit_button") }} </td>
+        <td> {{ form.registration(class_="submit_button") }} </td>
+</tr>
+</form>
+</body>
+</html>

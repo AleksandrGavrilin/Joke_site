@@ -1,0 +1,143 @@
+:root {
+--primary-color: hsl(195, 60%, 50%);
+--secondary-color: hsl(275, 59%, 70%);
+}
+body {
+        background-color: var(--primary-color);
+        font-family: Arial, Verdana, sans-serif;
+        color: white;
+        background-size: cover;
+        background-repeat: no-repeat;
+        margin-left: auto;
+        margin-right: auto;
+        width: 500px;
+        max-width: 80%;
+        margin-align: center;
+        width: 50em;
+        }
+h1     {
+        margin-left: auto;
+        margin-right: auto;
+        text-shadow: 3px 2px hsl(275, 59%, 70%);
+        text-align: center;
+}
+.inp     {
+        margin-left: auto;
+        margin-right: auto;
+        text-shadow: 3px 2px hsl(275, 59%, 70%);
+        text-align: center;
+}
+.submit_button {
+        font-weight: bold;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 10px;
+        border: 3px solid hsl(275, 59%, 70%);
+        text-align: center;
+        text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  padding: 10px 24px;
+   transition-duration: 1.5s;
+
+ }
+.submit_button: hover{
+    background-color: #4CAF50;
+  color: white;
+   }
+ .button:after {
+  content: "";
+  background: #f1f1f1;
+  display: block;
+  position: absolute;
+  padding-top: 300%;
+  padding-left: 350%;
+  margin-left: -20px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 0.8s
+}
+
+.button:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s
+}
+
+.wrapper {
+        width: 1000px;
+        max-width: 80%;
+        border: thick double #32a1ce;
+        border-radius: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50em;
+}
+.rating-area {
+	overflow: hidden;
+	width: 265px;
+	margin: 0 auto;
+}
+.rating-area:not(:checked) > input {
+	display: none;
+}
+.rating-area:not(:checked) > label {
+	float: right;
+	width: 42px;
+	padding: 0;
+	cursor: pointer;
+	font-size: 32px;
+	line-height: 32px;
+	color: lightgrey;
+	text-shadow: 1px 1px #bbb;
+}
+.rating-area:not(:checked) > label:before {
+	content: '★';
+}
+.rating-area > input:checked ~ label {
+	color: gold;
+	text-shadow: 1px 1px #c60;
+}
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+	color: gold;
+}
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+	color: gold;
+	text-shadow: 1px 1px goldenrod;
+}
+.rate-area > label:active {
+	position: relative;
+}
+
+input[type='text'], input[type='email'], input[type='password'] {
+  font-weight: bold;
+  width: 30%;
+  padding: 8px 20px;
+  margin: 2px 0;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: 5px hsl(195, 60%, 50%);
+}
+
+textarea {
+  font-weight: bold;
+  width: 100%;
+  height: 150px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  resize: none;
+}
+
+.dropdown {
+  font-weight: bold;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+}
