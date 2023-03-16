@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+<link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='styles/style_joke.css') }}">
+
+</head>
+<body background = "{{ url_for('static', filename='img/jokes.jpg') }}">
+<h1>Регистрация пользователя</h1>
+{% if flag %}
+<script>alert("Пользователь с данным email уже зарегистрирован!")</script>
+{% endif %}
+<form action="" method="post">
+  {{ form.csrf_token }}
+<table>
+    <tr>
+        <td align="right"> <b> {{ form.username.label  }} </b> </td>
+           <td> {{ form.username}} </td>
+  {% for error in form.username.errors  %}
+    {{ error }}
+  {% endfor %}
+</tr>
+    <tr>
+   <td align="right"> <b> {{ form.email.label }} </b> </td>
+  <td> {{ form.email}} </td>
+        {% for error in form.email.errors %}
+    {{ error }}
+  {% endfor %}
+    </tr>
+   <tr>
+<td align="right"> <b> {{ form.password.label }} </b> </td>
+  <td > {{ form.password}} </td>
+  {% for error in form.password.errors  %}
+    {{ error }}
+  {% endfor %}
+</tr>
+   <tr>
+<td align="right"> <b> {{ form.password_confrim.label }} </b> </td>
+  <td > {{ form.password_confrim}} </td>
+  {% for error in form.password.errors  %}
+    {{ error }}
+  {% endfor %}
+</tr>
+       <tr>
+        <td align="right"> <b> {{ form.first_name.label  }} </b> </td>
+           <td > {{ form.first_name}} </td>
+  {% for error in form.first_name.errors  %}
+    {{ error }}
+  {% endfor %}
+</tr>
+       <tr>
+        <td align="right"> <b> {{ form.second_name.label  }} </b> </td>
+           <td > {{ form.second_name}} </td>
+  {% for error in form.second_name.errors  %}
+    {{ error }}
+  {% endfor %}
+</tr>
+  <tr>
+      <td> </td>
+  <td align="left"> {{ form.submit(class_="submit_button") }} </td>
+</tr>
+</form>
+</body>
+</html>

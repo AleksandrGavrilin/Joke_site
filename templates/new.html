@@ -10,24 +10,25 @@
 {% if flag %}
 <script>alert("Ваш анекдот отправлен администратору на проверку!")</script>
 {% endif %}
-<form action="" method="post">
+<h1>Добавление нового анекдота в базу данных</h1>
+<form action="" id="Newanek" method="post">
  {{ form.csrf_token }}
 <p>
-  {{ form.email.label }}
-  {{ form.email(class_="input") }}
+  <b> {{ form.email.label }} </b>
+  {{ form.email}}
   {% for error in form.email.errors  %}
     {{ error }}
   {% endfor %}
 </p>
  <p>
-    {{ form.category.label }}
+   <b> {{ form.category.label }} </b>
   {{ form.category(class_="dropdown") }}
   {% for error in form.category.errors  %}
     {{ error }}
   {% endfor %}
 </p>
  <p>
- {{ form.new_anek.label }}
+ <b> {{ form.new_anek.label }} </b>
   {{ form.new_anek(class_="textarea") }}
   {% for error in form.new_anek.errors  %}
     {{ error }}
@@ -35,5 +36,8 @@
 </p>
   {{ form.send(class_="submit_button") }}
 </form>
+{% if flag %}
+<script defer>document.getElementById('Newanek').reset()</script>
+{% endif %}
 </body>
 </html>

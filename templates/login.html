@@ -10,28 +10,34 @@
 <h1>Вход в систему</h1>
 <form action="" method="post">
   {{ form.csrf_token }}
-<table border="0">
+<table>
     <tr>
-        <td>{{ form.username.label }} </td>
- <td> {{ form.username }}</td>
+        <td align="right"> <b> {{ form.username.label  }} </b> </td>
+           <td > {{ form.username}} </td>
   {% for error in form.username.errors  %}
     {{ error }}
   {% endfor %}
 </tr>
    <tr>
-<td> {{ form.password.label }} </td>
- <td> {{ form.password }} </td>
+<td align="right"> <b> {{ form.password.label }} </b> </td>
+  <td > {{ form.password}} </td>
   {% for error in form.password.errors  %}
     {{ error }}
   {% endfor %}
 </tr>
      <tr>
-    <td> {{ form.remember_me.label }} </td>
- <td> {{ form.remember_me }} </td>
-
-  <td> {{ form.submit(class_="submit_button") }} </td>
-        <td> {{ form.registration(class_="submit_button") }} </td>
+    <td colspan="2" align="center"> {{ form.remember_me.label }}
+        {{ form.remember_me }} </td>
 </tr>
-</form>
+  <tr>
+      <td colspan="2" align="center"> {{ form.submit(class_="submit_button") }} </td>
+     </tr>
+    </table>
+    </form>
+<div class="center">
+    <form action="http://127.0.0.1:5000/registration/" target="_blank" >
+   <button class = "submit_button">Регистрация</button>
+    </form>
+    </div>
 </body>
 </html>

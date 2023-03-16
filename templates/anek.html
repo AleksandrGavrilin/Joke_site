@@ -6,13 +6,13 @@
    <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='styles/style_joke.css') }}">
 </head>
 <body background = "{{ url_for('static', filename='img/jokes.jpg') }}">
-<form action="http://127.0.0.1:5000/login" target="_blank">
+<form action="/login" target="_blank">
    <button class = "submit_button"> Войти в систему</button>
   </form>
 <h1>Топ 5 случайных анекдотов</h1>
     {% for anek, id in list_anek %}
         <div class="wrapper">{{ anek }}
-        <div class="rating-area">
+       <form action="/rating" method="post" name="form_{{ id }}"> <div class="rating-area">
 	<input type="radio" id="star-5{{ id }}"  name="rating" value="5">
 	<label for="star-5{{ id }}" title="Оценка «5»"></label>
 	<input type="radio" id="star-4{{ id }}" name="rating" value="4">
@@ -23,12 +23,15 @@
 	<label for="star-2{{ id }}" title="Оценка «2»"></label>
 	<input type="radio" id="star-1{{ id }}" name="rating" value="1">
 	<label for="star-1{{ id }}" title="Оценка «1»"></label>
-</div>
+</div> </form>
+            <script>
+                document.forms["form_{{ id }}].submit();
+            </script>
      </div>
     {% endfor %}
 <p><b>Выберите категорию анекдотов, по списку ниже:</b></p>
-<form action = '/anekdots/' method="post">
-    <div class="wrapper-dropdown" tabindex="1">
+<form action = '/' method="post">
+    <div tabindex="1">
 <p><select size="1" name="category">
   <option disabled>Категория анекдота</option>
     {% for cat, number in category %}
@@ -38,9 +41,9 @@
     </div>
   <p><input class = "submit_button" type="submit" value="Выбрать!"></p>
  </form>
-<form action="http://127.0.0.1:5000/new/" target="_blank">
+<form action="/new/" target="_blank">
    <button class = "submit_button"> Добавить свой анекдот!</button>
   </form>
-    <footer>В базе данных <b>{{ n }}</b> анекдотов.</footer>
+    <footer>В базе данных <b>{{ n }}</b> анекдота.</footer>
 </body>
 </html>

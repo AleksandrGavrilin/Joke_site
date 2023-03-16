@@ -21,6 +21,11 @@ h1     {
         text-shadow: 3px 2px hsl(275, 59%, 70%);
         text-align: center;
 }
+table {
+width: 400px;
+margin: auto;
+}
+
 .inp     {
         margin-left: auto;
         margin-right: auto;
@@ -29,6 +34,7 @@ h1     {
 }
 .submit_button {
         font-weight: bold;
+        font-size: 13px;
         background-color: var(--primary-color);
         color: white;
         border-radius: 10px;
@@ -36,8 +42,7 @@ h1     {
         text-align: center;
         text-decoration: none;
   display: inline-block;
-  font-size: 15px;
-  padding: 10px 24px;
+  padding: 8px 20px;
    transition-duration: 1.5s;
 
  }
@@ -117,12 +122,11 @@ h1     {
 
 input[type='text'], input[type='email'], input[type='password'] {
   font-weight: bold;
-  width: 30%;
+  width: 60%;
   padding: 8px 20px;
   margin: 2px 0;
-  box-sizing: border-box;
   border-radius: 5px;
-  border: 5px hsl(195, 60%, 50%);
+  border: solid #32a1ce;
 }
 
 textarea {
@@ -132,12 +136,19 @@ textarea {
   padding: 12px 20px;
   box-sizing: border-box;
   border-radius: 4px;
-  background-color: #f8f8f8;
+  border: solid #32a1ce;
   resize: none;
+  maxlength: 100;
 }
 
 .dropdown {
   font-weight: bold;
   border-radius: 4px;
   background-color: #f8f8f8;
+  border: solid #32a1ce;
+}
+
+.center {
+width: 100%;
+text-align: center;
 }
