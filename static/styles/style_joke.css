@@ -1,32 +1,42 @@
-:root {
---primary-color: hsl(195, 60%, 50%);
---secondary-color: hsl(275, 59%, 70%);
+:root  {
+        --primary-color: hsl(195, 60%, 50%);
+        --secondary-color: hsl(275, 59%, 70%);
 }
-body {
+body   {
         background-color: var(--primary-color);
         font-family: Arial, Verdana, sans-serif;
         color: white;
-        background-size: cover;
         background-repeat: no-repeat;
+        background-position: center center;
+        background-attachment: fixed;
+        background-size: cover;
         margin-left: auto;
         margin-right: auto;
         width: 500px;
         max-width: 80%;
         margin-align: center;
         width: 50em;
-        }
+}
 h1     {
         margin-left: auto;
         margin-right: auto;
-        text-shadow: 3px 2px hsl(275, 59%, 70%);
+        text-shadow: 4px 3px #32a1ce;
         text-align: center;
 }
-table {
-width: 400px;
-margin: auto;
+footer {
+        position:fixed;
+        right: 0px;
+        bottom:0px;
+        height:20px;
+        width:100%;
 }
 
-.inp     {
+table  {
+        width: 400px;
+        margin: auto;
+}
+
+.inp   {
         margin-left: auto;
         margin-right: auto;
         text-shadow: 3px 2px hsl(275, 59%, 70%);
@@ -38,36 +48,36 @@ margin: auto;
         background-color: var(--primary-color);
         color: white;
         border-radius: 10px;
-        border: 3px solid hsl(275, 59%, 70%);
+        border: solid #32a1ce;
         text-align: center;
         text-decoration: none;
-  display: inline-block;
-  padding: 8px 20px;
-   transition-duration: 1.5s;
+        display: inline-block;
+        padding: 8px 20px;
+        transition-duration: 1.5s;
 
- }
+}
 .submit_button: hover{
-    background-color: #4CAF50;
-  color: white;
-   }
+        background-color: #4CAF50;
+        color: white;
+}
  .button:after {
-  content: "";
-  background: #f1f1f1;
-  display: block;
-  position: absolute;
-  padding-top: 300%;
-  padding-left: 350%;
-  margin-left: -20px !important;
-  margin-top: -120%;
-  opacity: 0;
-  transition: all 0.8s
+        content: "";
+        background: #f1f1f1;
+        display: block;
+        position: absolute;
+        padding-top: 300%;
+        padding-left: 350%;
+        margin-left: -20px !important;
+        margin-top: -120%;
+        opacity: 0;
+        transition: all 0.8s
 }
 
 .button:active:after {
-  padding: 0;
-  margin: 0;
-  opacity: 1;
-  transition: 0s
+        padding: 0;
+        margin: 0;
+        opacity: 1;
+        transition: 0s
 }
 
 .wrapper {
@@ -79,76 +89,76 @@ margin: auto;
         margin-right: auto;
         width: 50em;
 }
-.rating-area {
-	overflow: hidden;
-	width: 265px;
-	margin: 0 auto;
-}
-.rating-area:not(:checked) > input {
-	display: none;
-}
-.rating-area:not(:checked) > label {
-	float: right;
-	width: 42px;
-	padding: 0;
-	cursor: pointer;
-	font-size: 32px;
-	line-height: 32px;
-	color: lightgrey;
-	text-shadow: 1px 1px #bbb;
-}
-.rating-area:not(:checked) > label:before {
-	content: '★';
-}
-.rating-area > input:checked ~ label {
-	color: gold;
-	text-shadow: 1px 1px #c60;
-}
-.rating-area:not(:checked) > label:hover,
-.rating-area:not(:checked) > label:hover ~ label {
-	color: gold;
-}
-.rating-area > input:checked + label:hover,
-.rating-area > input:checked + label:hover ~ label,
-.rating-area > input:checked ~ label:hover,
-.rating-area > input:checked ~ label:hover ~ label,
-.rating-area > label:hover ~ input:checked ~ label {
-	color: gold;
-	text-shadow: 1px 1px goldenrod;
-}
-.rate-area > label:active {
-	position: relative;
-}
 
 input[type='text'], input[type='email'], input[type='password'] {
-  font-weight: bold;
-  width: 60%;
-  padding: 8px 20px;
-  margin: 2px 0;
-  border-radius: 5px;
-  border: solid #32a1ce;
+        font-weight: bold;
+        width: 60%;
+        padding: 8px 20px;
+        margin: 2px 0;
+        border-radius: 5px;
+        border: solid #32a1ce;
 }
 
 textarea {
-  font-weight: bold;
-  width: 100%;
-  height: 150px;
-  padding: 12px 20px;
-  box-sizing: border-box;
-  border-radius: 4px;
-  border: solid #32a1ce;
-  resize: none;
-  maxlength: 100;
+        font-weight: bold;
+        width: 100%;
+        height: 150px;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        border: solid #32a1ce;
+        resize: none;
+        maxlength: 100;
 }
-
+.flashes {
+        font-weight: bold;
+        width: auto;
+        height: auto;
+        padding: 12px 20px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        border: solid #32a1ce;
+        resize: none;
+        maxlength: 100;
+}
 .dropdown {
-  font-weight: bold;
-  border-radius: 4px;
-  background-color: #f8f8f8;
-  border: solid #32a1ce;
+        font-weight: bold;
+        border-radius: 4px;
+        background-color: #32a1ce;
+        border: solid #32a1ce;
+        color: white;
 }
 
 .center {
-width: 100%;
-text-align: center;
+        width: 100%;
+        text-align: center;
 }
+
+.word {
+        font-size: 18px;
+        word-wrap: break-word;
+}
+
+/* (C) STAR RATING */
+/* (C1) CUSTOM "STAR ICON ONLY" FONT */
+/* https://icomoon.io/ */
+@font-face {
+        font-family: "icomoon";
+        src: url(icomoon.woff);
+}
+
+/* (C2) STAR RATING WRAPPER */
+.starwrap { display: flex; }
+
+/* (C3) STAR ICON */
+.star {
+        font-family: "icomoon" !important;
+        font-size: 24px; color: #d1d1d1;
+        font-style: normal; font-weight: normal; font-variant: normal;
+        text-transform: none; line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+}
+.star::before { content: "\e9d9"; }
+.star.on { color: #ffe000; }
+

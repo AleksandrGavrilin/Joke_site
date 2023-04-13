@@ -1,6 +1,6 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Boolean
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, ForeignKey
 
 
 sqlite_database = "sqlite:///aneks.db"
@@ -23,9 +23,9 @@ class NewAnek(Base):
     __tablename__ = "new_anek"
 
     id = Column(Integer, primary_key=True, index=True)
-    cat = Column(Integer)
+    userid = Column(Integer, ForeignKey('Users.id'))
+    cat = Column(Integer, ForeignKey("category.id"))
     text = Column(String, default="")
-    email = Column(String, default="")
 
 
 class Cat(Base):
@@ -44,4 +44,14 @@ class Users(Base):
     email = Column(String, default="")
     first_name = Column(String, default="")
     second_name = Column(String, default="")
+    administrator = Column(Boolean, default=False)
+
+
+class Ratings(Base):
+    __tablename__ = "ratings"
+    id = Column(Integer, primary_key=True, index=True)
+    anek_id = Column(Integer, ForeignKey('anek.id'))
+    user_id = Column(Integer, ForeignKey('Users.id'))
+    rating = Column(Integer, default=0)
+
 

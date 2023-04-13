@@ -3,39 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <title>Анекдоты!</title>
+        <script src= "{{ url_for('static', filename='js/joke.js') }}"> </script>
    <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='styles/style_joke.css') }}">
 </head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul id="layout" class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<script>
+function del () {
+const lay = document.getElementById("layout")
+const parent = lay.parentNode
+parent.removeChild(lay)
+}
+setTimeout(del, 3000)
+</script>
 <body background = "{{ url_for('static', filename='img/jokes.jpg') }}">
-<form action="/login" target="_blank">
-   <button class = "submit_button"> Войти в систему</button>
+<form action="/logout" target="_blank">
+   <button class = "submit_button">Выйти из профиля</button>
   </form>
-<h1>Топ 5 случайных анекдотов</h1>
-    {% for anek, id in list_anek %}
+<h1>5 случайных анекдотов</h1>
+    {% for anek, id, (astar1, astar2, ustar) in list_anek %}
         <div class="wrapper">{{ anek }}
-       <form action="/rating" method="post" name="form_{{ id }}"> <div class="rating-area">
-	<input type="radio" id="star-5{{ id }}"  name="rating" value="5">
-	<label for="star-5{{ id }}" title="Оценка «5»"></label>
-	<input type="radio" id="star-4{{ id }}" name="rating" value="4">
-	<label for="star-4{{ id }}" title="Оценка «4»"></label>
-	<input type="radio" id="star-3{{ id }}" name="rating" value="3">
-	<label for="star-3{{ id }}" title="Оценка «3»"></label>
-	<input type="radio" id="star-2{{ id }}" name="rating" value="2">
-	<label for="star-2{{ id }}" title="Оценка «2»"></label>
-	<input type="radio" id="star-1{{ id }}" name="rating" value="1">
-	<label for="star-1{{ id }}" title="Оценка «1»"></label>
-</div> </form>
-            <script>
-                document.forms["form_{{ id }}].submit();
-            </script>
-     </div>
+            <div class="avg">Средний рейтинг: {% if astar1 >= 4 %}
+                <div style='color:green'> {{ astar1 }}  </div>
+                {% elif astar1 >= 3 %}
+                <div style='color:yellow'> {{ astar1 }}  </div>
+                {% elif astar1 >= 2 %}
+                <div style='color:orange'> {{ astar1 }}  </div>
+                {% elif astar1 >= 1 %}
+                <div style='color:red'> {{ astar1 }}  </div>
+                {% elif astar1 == 0 %}
+                <div style='color:black'> {{ astar1 }}  </div>
+                {% endif %}
+                 ({{ astar2 }} чел.)</div>
+
+  <div class="rate">Ваш рейтинг: <div id="anek_id_{{ id }}"></div></div>
+        </div>
+
+<script>
+starry({
+  target: document.getElementById("anek_id_{{ id }}"),
+  max: 5,
+  now: {{ ustar }},
+  click : stars => {
+    let data = new FormData();
+    data.append("stars", stars);
+    data.append("anek_id", {{ id }});
+    fetch("/save/", {
+      method: "post",
+      body: data
+    })
+    .then(res => res.text())
+    .then(txt => {
+      if (txt == "OK") { location.reload(); }
+      else { alert(txt); }
+    });
+  }
+});
+</script>
+
     {% endfor %}
 <p><b>Выберите категорию анекдотов, по списку ниже:</b></p>
-<form action = '/' method="post">
+<form action = '/anek/' method="post">
     <div tabindex="1">
-<p><select size="1" name="category">
+<p><select size="1" name="category" class="dropdown">
   <option disabled>Категория анекдота</option>
     {% for cat, number in category %}
-    <option value={{ number }} > {{cat}} </option>
+    <option value={{ number }}> {{cat}} </option>
     {% endfor %}
 </select></p>
     </div>
@@ -44,6 +84,6 @@
 <form action="/new/" target="_blank">
    <button class = "submit_button"> Добавить свой анекдот!</button>
   </form>
-    <footer>В базе данных <b>{{ n }}</b> анекдота.</footer>
+    <footer>В базе данных <b>{{ n }}</b> анекдотов.</footer>
 </body>
 </html>

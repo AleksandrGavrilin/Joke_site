@@ -7,19 +7,15 @@
 
 </head>
 <body background = "{{ url_for('static', filename='img/jokes.jpg') }}">
+<form action="/anek/" target="_blank">
+       <button class = "submit_button">Вернуться на главную</button>
+  </form>
 {% if flag %}
 <script>alert("Ваш анекдот отправлен администратору на проверку!")</script>
 {% endif %}
 <h1>Добавление нового анекдота в базу данных</h1>
-<form action="" id="Newanek" method="post">
+<form action="/new/" id="Newanek" method="post">
  {{ form.csrf_token }}
-<p>
-  <b> {{ form.email.label }} </b>
-  {{ form.email}}
-  {% for error in form.email.errors  %}
-    {{ error }}
-  {% endfor %}
-</p>
  <p>
    <b> {{ form.category.label }} </b>
   {{ form.category(class_="dropdown") }}

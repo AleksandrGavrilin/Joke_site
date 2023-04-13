@@ -6,6 +6,23 @@
 <link rel="stylesheet" type="text/css" href= "{{ url_for('static', filename='styles/style_joke.css') }}">
 
 </head>
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <ul id="layout" class=flashes>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+<script>
+function del () {
+const lay = document.getElementById("layout")
+const parent = lay.parentNode
+parent.removeChild(lay)
+}
+setTimeout(del, 3000)
+</script>
 <body background = "{{ url_for('static', filename='img/jokes.jpg') }}">
 <h1>Регистрация пользователя</h1>
 {% if flag %}
