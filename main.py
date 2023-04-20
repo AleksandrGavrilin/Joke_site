@@ -40,7 +40,6 @@ def unauthorized():
 
 # Рефакторинг кода
 # Личный кабинет (анекдоты которые оценил, изм. данных профиля)
-# визуализация рейтинга
 def get_cat():
     with Session() as db:
         cats = db.query(Cat).all()
