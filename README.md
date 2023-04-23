@@ -14,7 +14,7 @@ _____
 
 ### <span style='color:rgb(232, 204, 111)'> 1. The first page of the site is the login.</span>
 + On this page, the user can log in, or go to the registration page
-+ + to go to the page use the direct path /
++ to go to the page use the direct path /
 ![](img_for_readme/0.login.jpg)
 ### <span style='color:rgb(232, 204, 111)'> 2. Registration page. </span>
 + Filling in information: login, email, password, first name, last name
