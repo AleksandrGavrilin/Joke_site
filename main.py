@@ -38,8 +38,6 @@ def unauthorized():
     return render_template('unauthorized.html')
 
 
-# Рефакторинг кода
-# Личный кабинет (анекдоты которые оценил, изм. данных профиля)
 def get_cat():
     with Session() as db:
         cats = db.query(Cat).all()
